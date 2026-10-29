@@ -1,5 +1,4 @@
-# Pre-built static site: nothing to build, serve the repo root as-is.
-# (Netlify mis-detects Hugo because the dashboard ships a config.json.)
+# Pre-built static site: nothing to build, serve the public/ folder as-is.
 [build]
   command = "echo 'Pre-built static site - no build step'"
-  publish = "."
+  publish = "public"

@@ -6,32 +6,32 @@ The graph has 131 nodes, 674 links, 8 layers and a 14-step guided tour. It was g
 
 ## What is in this repo
 
-This is a **pre-built static site**, so there is no build step:
+This is a **pre-built static site**, so there is no build step. The site lives in `public/`:
 
 | Path | What it is |
 |---|---|
-| `index.html`, `assets/` | The Understand-Anything dashboard, built in demo (static) mode |
-| `knowledge-graph.json` | The Pulse knowledge graph the dashboard loads |
-| `meta.json`, `config.json` | Analysis metadata and settings |
-| `vercel.json` | Vercel settings (static site, no framework) |
-| `netlify.toml` | Netlify settings (no build, publish the repo root) |
+| `public/index.html`, `public/assets/` | The Understand-Anything dashboard, built in demo (static) mode |
+| `public/knowledge-graph.json` | The Pulse knowledge graph the dashboard loads |
+| `public/meta.json`, `public/config.json` | Analysis metadata and settings |
+| `netlify.toml` | Netlify settings: no build, publish `public/` |
+| `vercel.json` | Vercel settings: no framework, output `public/` |
 | `LICENSE` | Understand-Anything's MIT licence, which covers the dashboard code |
+
+## Deploy on Netlify
+
+Import the repository and deploy. `netlify.toml` overrides the build settings in the Netlify UI: it runs a no-op build command and publishes `public/`.
 
 ## Deploy on Vercel
 
 1. In Vercel, choose **Add New → Project** and import this repository.
-2. Set **Framework Preset** to **Other**, and leave the build command and output directory empty. There is no `package.json`, so Vercel serves the files as they are.
+2. Set **Framework Preset** to **Other**, and leave the build command and output directory empty. `vercel.json` already points Vercel at `public/`.
 3. Deploy. The dashboard opens at the site root.
-
-## Deploy on Netlify
-
-`netlify.toml` sets a no-op build command and publishes the repo root. It overrides the build settings in the Netlify UI, so there is no need to change them. Without it, Netlify mistakes this repo for a Hugo site because of `config.json`.
 
 ## Update the graph
 
 1. Re-run `/understand-anything:understand` on the developer guide folder.
-2. Replace `knowledge-graph.json` and `meta.json` here with the new files from `.ua/`.
-3. Commit and push. Vercel redeploys automatically.
+2. Replace `public/knowledge-graph.json` and `public/meta.json` with the new files from `.ua/`.
+3. Commit and push. Netlify or Vercel redeploys automatically.
 
 ## Caveats
 
