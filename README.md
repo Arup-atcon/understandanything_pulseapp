@@ -14,6 +14,7 @@ This is a **pre-built static site**, so there is no build step:
 | `knowledge-graph.json` | The Pulse knowledge graph the dashboard loads |
 | `meta.json`, `config.json` | Analysis metadata and settings |
 | `vercel.json` | Vercel settings (static site, no framework) |
+| `netlify.toml` | Netlify settings (no build, publish the repo root) |
 | `LICENSE` | Understand-Anything's MIT licence, which covers the dashboard code |
 
 ## Deploy on Vercel
@@ -21,6 +22,10 @@ This is a **pre-built static site**, so there is no build step:
 1. In Vercel, choose **Add New → Project** and import this repository.
 2. Set **Framework Preset** to **Other**, and leave the build command and output directory empty. There is no `package.json`, so Vercel serves the files as they are.
 3. Deploy. The dashboard opens at the site root.
+
+## Deploy on Netlify
+
+`netlify.toml` sets a no-op build command and publishes the repo root. It overrides the build settings in the Netlify UI, so there is no need to change them. Without it, Netlify mistakes this repo for a Hugo site because of `config.json`.
 
 ## Update the graph
 
